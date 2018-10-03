@@ -1,0 +1,8 @@
+curator:
+#    url: "zookeeper:2181/"
+    url: "172.17.0.2:2181"
+    sessionTimeout: 1000
+    connectionTimeout: 1000
+    backoffSleep: 1000
+    maxSleepTime: 3
+    uniq.id: my_instance1

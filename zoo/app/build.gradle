@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = 'pl.elite.App'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext.versions = [
+    springBoot: '2.0.3.RELEASE',
+    curator: '4.0.1'
+]
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
+    compile group: 'org.apache.curator', name: 'curator-framework', version: versions.curator
+    compile group: 'org.apache.curator', name: 'curator-recipes', version: versions.curator
+
+    testCompile group: "org.springframework.boot", name: "spring-boot-starter-test", version: versions.springBoot
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.11'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
+    testRuntime group: 'org.objenesis', name: 'objenesis', version: '2.5.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.7'
+}
